@@ -8,7 +8,9 @@ import 'package:nyay/pages/splash_screen_page.dart';
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  runApp(const App());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_){
+    runApp(const App());
+  });
 }
 
 class App extends StatelessWidget {
