@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nyay/components/recent_lawyer_card.dart';
 import 'package:nyay/components/my_search_bar.dart';
 import 'package:nyay/pages/lawyer_list_page.dart';
+import 'package:nyay/pages/rehabilitation_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -217,7 +218,7 @@ class CategoriesCard extends StatelessWidget {
     0: LawyerListPage(),
     1: LawyerListPage(),
     2: LawyerListPage(),
-    3: LawyerListPage(),
+    3: const RehabilitationPage(),
     // Add more categories and corresponding pages here
   };
 
