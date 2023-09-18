@@ -23,62 +23,122 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 50.h,
           ),
-          Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(20.0.w),
-                child: const CircleAvatar(
-                  radius: 30,
-                  backgroundImage:
-                      AssetImage('assets/images/demo_profile_image.png'),
-                  // Replace with your image asset
-                ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 15.w),
+            height: 200.w,
+            decoration: BoxDecoration(
+              // color: Colors.blueAccent,
+              gradient: const LinearGradient(
+                colors: [
+                  Color.fromRGBO(2, 81, 216, 0.92),
+                  Color.fromRGBO(97, 154, 252, 0.75)
+                ], // Adjust colors as needed
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
               ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
                   children: [
-                    Text(
-                      "Hi, Welcome",
-                      style: TextStyle(color: Colors.grey, fontSize: 17.w),
-                    ),
-                    Text(
-                      "Piyush Pandey",
-                      style: TextStyle(
-                        fontSize: 20.w,
-                        fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: EdgeInsets.all(20.0.w),
+                      child: const CircleAvatar(
+                        radius: 30,
+                        backgroundImage:
+                            AssetImage('assets/images/demo_profile_image.png'),
+                        // Replace with your image asset
                       ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Hi, Welcome",
+                        style: TextStyle(color: const Color.fromRGBO(0, 30, 97, 1),fontSize: 17.w),),
+                          Text(
+                            "Piyush Pandey",
+                            style: TextStyle(
+                              fontSize: 20.w,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: Icon(FontAwesomeIcons.bell),
                     ),
                   ],
                 ),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(20.0),
-                child: Icon(FontAwesomeIcons.bell),
-              ),
-            ],
-          ),
-          const MySearchBar(),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 10.0.w),
-            child: Text(
-              "Recent",
-              style: TextStyle(
-                fontSize: 20.w,
-                fontWeight: FontWeight.bold,
-              ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Row(
+                    children: [
+                      const FaIcon(
+                        FontAwesomeIcons.circleDot,
+                        color: Colors.red,
+                      ),
+                      Text(
+                        "  Current Case",
+                        style: TextStyle(
+                          color: const Color.fromRGBO(0, 30, 97, 1),
+                          fontSize: 17.w,
+                          // fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10.w,
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Title",
+                          style: TextStyle(color: Colors.deepPurple),),
+                        Text(
+                          "Robbery Case",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text("Name of Trial Court",
+                          style: TextStyle(color: Colors.deepPurple),),
+                        Text(
+                          "Addl. Sessinos Judge Rajouri",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Started on",
+                          style: TextStyle(color: Colors.deepPurple),
+                        ),
+                        Text(
+                          "September 23,2022",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
+                  ],
+                )
+              ],
             ),
           ),
-          const RecentLawyerCard(),
-          // Container(
-          //   margin: EdgeInsets.symmetric(horizontal: 15.0.w),
-          //   height: 90.h,
-          //   decoration: BoxDecoration(
-          //     color: Colors.blue,
-          //     borderRadius: BorderRadius.circular(15),
-          //   ),
-          // ),
+          const MySearchBar(),
+
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 10.0.w),
             child: Text(
@@ -121,6 +181,25 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 10.0.w),
+            child: Text(
+              "Recent",
+              style: TextStyle(
+                fontSize: 20.w,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const RecentLawyerCard(),
+          // Container(
+          //   margin: EdgeInsets.symmetric(horizontal: 15.0.w),
+          //   height: 90.h,
+          //   decoration: BoxDecoration(
+          //     color: Colors.blue,
+          //     borderRadius: BorderRadius.circular(15),
+          //   ),
+          // ),
         ],
       ),
     ));
@@ -128,7 +207,8 @@ class _HomePageState extends State<HomePage> {
 }
 
 class CategoriesCard extends StatelessWidget {
-  const CategoriesCard({super.key, required this.text,required this.cardIndex});
+  const CategoriesCard(
+      {super.key, required this.text, required this.cardIndex});
 
   final String text;
   final int cardIndex;
@@ -145,13 +225,15 @@ class CategoriesCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: GestureDetector(
-        onTap: (){
+        onTap: () {
           if (destinationPages.containsKey(cardIndex)) {
             // Navigator.of(context).push(destinationPages[cardIndex]!,
-            Navigator.push(context,MaterialPageRoute(
-              builder: (context) => destinationPages[cardIndex]!,
-            ),
-          );
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => destinationPages[cardIndex]!,
+              ),
+            );
           }
         },
         child: Card(
