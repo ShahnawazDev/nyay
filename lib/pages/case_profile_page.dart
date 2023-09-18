@@ -9,9 +9,22 @@ class CaseProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Your Cases'),
+        appBar:AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          iconTheme: IconThemeData(
+            size: 25.w,
+            color: Colors.black,
+          ),
           centerTitle: true,
+          title: Text(
+            'Your Cases',
+            style: TextStyle(
+              fontSize: 20.w,
+              color: const Color.fromRGBO(64, 124, 226, 1),
+            ),
+          ),
+
         ),
         body: const Column(
           children: [

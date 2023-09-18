@@ -9,9 +9,22 @@ class RehabilitationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
         appBar: AppBar(
-          title: const Text('Rehabilitation'),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          iconTheme: IconThemeData(
+            size: 25.w,
+            color: Colors.black,
+          ),
           centerTitle: true,
+          title: Text(
+            'Rehabilitation',
+            style: TextStyle(
+              fontSize: 20.w,
+              color: const Color.fromRGBO(64, 124, 226, 1),
+            ),
+          ),
         ),
         body: const Column(
           children: [

@@ -55,13 +55,25 @@ class LawyerListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Lawyer List'),
+        backgroundColor: Colors.transparent,
         elevation: 0,
-        // backgroundColor: Colors.blue,
+        iconTheme: IconThemeData(
+          size: 25.w,
+          color: Colors.black,
+        ),
+        centerTitle: true,
+        title: Text(
+          'Lawyer Lists',
+          style: TextStyle(
+            fontSize: 20.w,
+            color: const Color.fromRGBO(64, 124, 226, 1),
+          ),
+        ),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(60.0.h),
-          child: const MySearchBar(suggestionText: 'Search the lawyer',),
+          child: const MySearchBar(
+            suggestionText: 'Search the lawyer',
+          ),
         ),
       ),
       body: ListView.builder(

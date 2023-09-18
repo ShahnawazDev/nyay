@@ -22,7 +22,8 @@ class _LegalAidPageState extends State<LegalAidPage> {
   }
 
   Future<void> loadActivities() async {
-    final String jsonData = await rootBundle.loadString('assets/json/ipc_sections.json');
+    final String jsonData =
+        await rootBundle.loadString('assets/json/ipc_sections.json');
     final List<dynamic> jsonList = json.decode(jsonData);
     final List<RehabilitationActivity> loadedActivities = [];
 
@@ -46,13 +47,27 @@ class _LegalAidPageState extends State<LegalAidPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Know the IPC Sections'),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: IconThemeData(
+          size: 25.w,
+          color: Colors.black,
+        ),
         centerTitle: true,
+        title: Text(
+          'Know the IPC Sections',
+          style: TextStyle(
+            fontSize: 20.w,
+            color: const Color.fromRGBO(64, 124, 226, 1),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const MySearchBar(suggestionText: 'Search IPC sections',),
+            const MySearchBar(
+              suggestionText: 'Search IPC sections',
+            ),
             for (final RehabilitationActivity activity in activities)
               RehabilitationActivityCard(
                 title: activity.title,
@@ -134,13 +149,13 @@ class RehabilitationActivity {
 //   }
 // }
 
-
 class RehabilitationActivityCard extends StatelessWidget {
   const RehabilitationActivityCard({
     super.key,
     required this.title,
     required this.description,
   });
+
   final String title;
   final String description;
 
@@ -172,7 +187,8 @@ class RehabilitationActivityCard extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Wrap( // Use Wrap for the description text
+                    Wrap(
+                      // Use Wrap for the description text
                       children: [
                         Text(
                           description,
