@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nyay/components/recent_lawyer_card.dart';
 import 'package:nyay/components/my_search_bar.dart';
+import 'package:nyay/pages/case_profile_page.dart';
 import 'package:nyay/pages/lawyer_list_page.dart';
 import 'package:nyay/pages/rehabilitation_page.dart';
 
@@ -216,7 +217,7 @@ class CategoriesCard extends StatelessWidget {
 
   static Map<int, Widget> destinationPages = {
     0: LawyerListPage(),
-    1: LawyerListPage(),
+    1: const CaseProfilePage(),
     2: LawyerListPage(),
     3: const RehabilitationPage(),
     // Add more categories and corresponding pages here
