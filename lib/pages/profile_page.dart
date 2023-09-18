@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nyay/pages/personal_details_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -68,6 +69,12 @@ class ProfilePage extends StatelessWidget {
           // Navigate to History page
         } else if (title == 'Personal Details') {
           // Navigate to Personal Details page
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const PersonalDetailsPage(),
+            ),
+          );
         } else if (title == 'Location') {
           // Navigate to Location page
         } else if (title == 'Payment Method') {
@@ -88,9 +95,9 @@ class ProfilePage extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Color.fromRGBO(210, 235, 231, 1),
+                    color: const Color.fromRGBO(210, 235, 231, 1),
                     borderRadius: BorderRadius.circular(50),
                   ),
                   child: Icon(

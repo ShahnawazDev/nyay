@@ -68,8 +68,8 @@ class _MainPageState extends State<MainPage> {
                   text: 'Home',
                 ),
                 GButton(
-                  icon: FontAwesomeIcons.clock,
-                  text: 'Time',
+                  icon: FontAwesomeIcons.plus,
+                  text: 'Add',
                 ),
                 GButton(
                   icon: FontAwesomeIcons.comment,
