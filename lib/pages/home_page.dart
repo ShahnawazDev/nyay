@@ -5,6 +5,7 @@ import 'package:nyay/components/recent_lawyer_card.dart';
 import 'package:nyay/components/my_search_bar.dart';
 import 'package:nyay/pages/case_profile_page.dart';
 import 'package:nyay/pages/lawyer_list_page.dart';
+import 'package:nyay/pages/legal_aid_page.dart';
 import 'package:nyay/pages/rehabilitation_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -218,7 +219,7 @@ class CategoriesCard extends StatelessWidget {
   static Map<int, Widget> destinationPages = {
     0: LawyerListPage(),
     1: const CaseProfilePage(),
-    2: LawyerListPage(),
+    2: const LegalAidPage(),
     3: const RehabilitationPage(),
     // Add more categories and corresponding pages here
   };
