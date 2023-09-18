@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nyay/components/recent_lawyer_card.dart';
+import 'package:nyay/components/my_search_bar.dart';
+import 'package:nyay/pages/lawyer_list_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -57,37 +59,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          Container(
-            margin: EdgeInsets.all(15.w),
-            padding: EdgeInsets.all(15.w),
-            height: 46.h,
-            width: 350.w,
-            decoration: BoxDecoration(
-              color: const Color.fromRGBO(217, 217, 217, 0.3),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              children: [
-                const Icon(
-                  FontAwesomeIcons.magnifyingGlass,
-                  color: Colors.lightBlueAccent,
-                ),
-                SizedBox(
-                  width: 10.w,
-                ),
-                Expanded(
-                    child: Text(
-                  "Search a Lawyer",
-                  style:
-                      TextStyle(color: Colors.lightBlueAccent, fontSize: 17.w),
-                )),
-                const Icon(
-                  FontAwesomeIcons.microphone,
-                  color: Colors.lightBlueAccent,
-                ),
-              ],
-            ),
-          ),
+          const MySearchBar(),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 10.0.w),
             child: Text(
@@ -125,9 +97,11 @@ class _HomePageState extends State<HomePage> {
               children: [
                 CategoriesCard(
                   text: "Find a Lawyer",
+                  cardIndex: 0,
                 ),
                 CategoriesCard(
                   text: "Case Profile",
+                  cardIndex: 1,
                 ),
               ],
             ),
@@ -138,9 +112,11 @@ class _HomePageState extends State<HomePage> {
               children: [
                 CategoriesCard(
                   text: "Legal Aid",
+                  cardIndex: 2,
                 ),
                 CategoriesCard(
                   text: "Rehabilitation",
+                  cardIndex: 3,
                 ),
               ],
             ),
@@ -152,24 +128,44 @@ class _HomePageState extends State<HomePage> {
 }
 
 class CategoriesCard extends StatelessWidget {
-  const CategoriesCard({super.key, required this.text});
+  const CategoriesCard({super.key, required this.text,required this.cardIndex});
 
   final String text;
+  final int cardIndex;
+
+  static Map<int, Widget> destinationPages = {
+    0: LawyerListPage(),
+    1: LawyerListPage(),
+    2: LawyerListPage(),
+    3: LawyerListPage(),
+    // Add more categories and corresponding pages here
+  };
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Card(
-        color: Color.fromRGBO(244, 244, 244, 1),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 30.0.h),
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.blueAccent,
-              fontSize: 15.w,
-              fontWeight: FontWeight.bold,
+      child: GestureDetector(
+        onTap: (){
+          if (destinationPages.containsKey(cardIndex)) {
+            // Navigator.of(context).push(destinationPages[cardIndex]!,
+            Navigator.push(context,MaterialPageRoute(
+              builder: (context) => destinationPages[cardIndex]!,
+            ),
+          );
+          }
+        },
+        child: Card(
+          color: const Color.fromRGBO(244, 244, 244, 1),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 30.0.h),
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.blueAccent,
+                fontSize: 15.w,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
