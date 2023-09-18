@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nyay/components/my_search_bar.dart';
 import 'package:nyay/model/lawyer.dart';
+import 'package:nyay/pages/lawyer_details_page.dart';
 
 class LawyerListPage extends StatelessWidget {
   final List<Lawyer> lawyers = [
@@ -100,15 +101,21 @@ class LawyerTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           color: const Color.fromRGBO(210, 235, 231, 0.3)),
       child: ListTile(
+        onTap: (){
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+              const LawyerDetailsPage(),
+            ),
+          );
+        },
         contentPadding: const EdgeInsets.all(10),
-        leading: Container(
-          // width: 100.w,
-          child: Image.asset(
-            lawyer.imageUrl,
-            width: 60.w,
-            // height: 10.w,
-            fit: BoxFit.fill,
-          ),
+        leading: Image.asset(
+          lawyer.imageUrl,
+          width: 60.w,
+          // height: 10.w,
+          fit: BoxFit.fill,
         ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
