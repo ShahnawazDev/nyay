@@ -6,6 +6,7 @@ import 'package:nyay/components/my_search_bar.dart';
 import 'package:nyay/pages/case_profile_page.dart';
 import 'package:nyay/pages/lawyer_list_page.dart';
 import 'package:nyay/pages/legal_aid_page.dart';
+import 'package:nyay/pages/notification_page.dart';
 import 'package:nyay/pages/rehabilitation_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -63,7 +64,10 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Text(
                             "Hi, Welcome",
-                        style: TextStyle(color: const Color.fromRGBO(0, 30, 97, 1),fontSize: 17.w),),
+                            style: TextStyle(
+                                color: const Color.fromRGBO(0, 30, 97, 1),
+                                fontSize: 17.w),
+                          ),
                           Text(
                             "Piyush Pandey",
                             style: TextStyle(
@@ -74,10 +78,18 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.all(20.0),
-                      child: Icon(FontAwesomeIcons.bell),
-                    ),
+                    IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const NotificationPage(),
+                            ),
+                          );
+                        },
+                        icon: const Icon(FontAwesomeIcons.bell)),
+
                   ],
                 ),
                 Padding(
@@ -108,14 +120,18 @@ class _HomePageState extends State<HomePage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Title",
-                          style: TextStyle(color: Colors.deepPurple),),
+                        Text(
+                          "Title",
+                          style: TextStyle(color: Colors.deepPurple),
+                        ),
                         Text(
                           "Robbery Case",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        Text("Name of Trial Court",
-                          style: TextStyle(color: Colors.deepPurple),),
+                        Text(
+                          "Name of Trial Court",
+                          style: TextStyle(color: Colors.deepPurple),
+                        ),
                         Text(
                           "Addl. Sessinos Judge Rajouri",
                           style: TextStyle(fontWeight: FontWeight.bold),
@@ -140,7 +156,9 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          const MySearchBar(suggestionText: 'Search the Lawyer',),
+          const MySearchBar(
+            suggestionText: 'Search the Lawyer',
+          ),
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 10.0.w),
