@@ -56,10 +56,13 @@ class LawyerListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Lawyer List'),
+        title: const Text('Lawyer List'),
         elevation: 0,
         // backgroundColor: Colors.blue,
-        bottom: PreferredSize(child: MySearchBar(), preferredSize: Size.fromHeight(60.0.h)),
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(60.0.h),
+          child: const MySearchBar(suggestionText: 'Search the lawyer',),
+        ),
       ),
       body: ListView.builder(
         itemCount: lawyers.length,
@@ -73,65 +76,62 @@ class LawyerListPage extends StatelessWidget {
 }
 
 class LawyerTile extends StatelessWidget {
-final Lawyer lawyer;
+  final Lawyer lawyer;
 
-const LawyerTile({super.key, required this.lawyer});
+  const LawyerTile({super.key, required this.lawyer});
 
-@override
-Widget build(BuildContext context) {
-  return Container(
-    margin: EdgeInsets.symmetric(horizontal: 15.w,vertical: 5.w),
-
-
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(20),
-      color: Color.fromRGBO(210, 235, 231, 0.3)
-    ),
-    child: ListTile(
-
-      contentPadding: EdgeInsets.all(10),
-      leading: Container(
-        // width: 100.w,
-        child: Image.asset(
-          lawyer.imageUrl,
-          width: 60.w,
-          // height: 10.w,
-          fit: BoxFit.fill,
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.w),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: const Color.fromRGBO(210, 235, 231, 0.3)),
+      child: ListTile(
+        contentPadding: const EdgeInsets.all(10),
+        leading: Container(
+          // width: 100.w,
+          child: Image.asset(
+            lawyer.imageUrl,
+            width: 60.w,
+            // height: 10.w,
+            fit: BoxFit.fill,
+          ),
+        ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(lawyer.name),
+            lawyer.isFavorite
+                ? const FaIcon(FontAwesomeIcons.solidHeart)
+                : const FaIcon(FontAwesomeIcons.heart),
+            // Text('Favorite: ${lawyer.isFavorite ? 'Yes' : 'No'}'),
+          ],
+        ),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(lawyer.description),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    // Handle booking action
+                  },
+                  child: const Text('Book'),
+                ),
+                Text(
+                  '⭐ ${lawyer.rating}',
+                  style: TextStyle(
+                    fontSize: 15.w,
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(lawyer.name),
-          lawyer.isFavorite ? const FaIcon(FontAwesomeIcons.solidHeart): const FaIcon(FontAwesomeIcons.heart),
-          // Text('Favorite: ${lawyer.isFavorite ? 'Yes' : 'No'}'),
-        ],
-      ),
-
-      subtitle: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-
-          Text(lawyer.description),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ElevatedButton(
-
-                onPressed: () {
-                  // Handle booking action
-                },
-                child: Text('Book'),
-              ),
-
-              Text('⭐ ${lawyer.rating}',
-              style: TextStyle(fontSize: 15.w,),),
-            ],
-          ),
-        ],
-      ),
-    ),
-  );
+    );
+  }
 }
-}
-

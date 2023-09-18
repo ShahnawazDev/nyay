@@ -140,7 +140,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          const MySearchBar(),
+          const MySearchBar(suggestionText: 'Search the Lawyer',),
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 10.0.w),

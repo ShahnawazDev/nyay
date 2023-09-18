@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nyay/pages/add_new_case_page.dart';
 
 import 'package:nyay/pages/chat_bot_page.dart';
 import 'package:nyay/pages/home_page.dart';
@@ -24,7 +25,7 @@ class _MainPageState extends State<MainPage> {
   // Define your pages
   final List<Widget> _pages = const [
     HomePage(),
-    Center(child: Text("Page")),
+    AddNewCase(),
     ChatBotPage(),
     ProfilePage(),
   ];

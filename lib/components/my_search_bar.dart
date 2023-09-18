@@ -7,7 +7,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class MySearchBar extends StatelessWidget {
   const MySearchBar({
     super.key,
+    required this.suggestionText
   });
+  final String suggestionText;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class MySearchBar extends StatelessWidget {
           ),
           Expanded(
               child: Text(
-                "Search a Lawyer",
+                suggestionText,
                 style:
                 TextStyle(color: Colors.lightBlueAccent, fontSize: 17.w),
               )),

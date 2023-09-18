@@ -15,7 +15,7 @@ class CaseProfilePage extends StatelessWidget {
         ),
         body: const Column(
           children: [
-            MySearchBar(),
+            MySearchBar(suggestionText: 'Search cases',),
             RehabilitationActivityCard(title: "Case XX002",description: "",),
             RehabilitationActivityCard(title: "Case XX012",description: "",),
             RehabilitationActivityCard(title: "Case XX062",description: "",),

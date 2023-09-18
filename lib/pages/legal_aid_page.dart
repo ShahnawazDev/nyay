@@ -52,7 +52,7 @@ class _LegalAidPageState extends State<LegalAidPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const MySearchBar(),
+            const MySearchBar(suggestionText: 'Search IPC sections',),
             for (final RehabilitationActivity activity in activities)
               RehabilitationActivityCard(
                 title: activity.title,

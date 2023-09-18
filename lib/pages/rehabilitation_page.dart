@@ -15,7 +15,7 @@ class RehabilitationPage extends StatelessWidget {
         ),
         body: const Column(
           children: [
-            MySearchBar(),
+            MySearchBar(suggestionText: 'Search rehabilitation activities',),
             RehabilitationActivityCard(title: "Games",description: "Play games",),
             RehabilitationActivityCard(title: "Yoga",description: "Let's do yoga using VR",),
             RehabilitationActivityCard(title: "Community",description: "Meet with people with similar experiences",),
