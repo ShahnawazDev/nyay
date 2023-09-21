@@ -106,7 +106,7 @@ class LawyerTile extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) =>
-              const LawyerDetailsPage(),
+              LawyerDetailsPage(lawyer: lawyer),
             ),
           );
         },
@@ -137,6 +137,13 @@ class LawyerTile extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     // Handle booking action
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            LawyerDetailsPage(lawyer: lawyer),
+                      ),
+                    );
                   },
                   child: const Text('Book'),
                 ),
