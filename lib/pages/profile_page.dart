@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nyay/pages/login_page.dart';
 import 'package:nyay/pages/personal_details_page.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -84,7 +85,12 @@ class ProfilePage extends StatelessWidget {
         } else if (title == 'Help') {
           // Navigate to Help page
         } else if (title == 'Logout') {
-          // Handle logout here
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const LoginPage(),
+            ),
+          );
         }
       },
       child: Padding(
