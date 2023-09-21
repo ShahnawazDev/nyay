@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nyay/pages/lawyer_main_page.dart';
 import 'package:nyay/pages/login_page.dart';
 import 'package:nyay/pages/main_page.dart';
 
 class CreateAccountPage extends StatelessWidget {
-  const CreateAccountPage({super.key});
+  CreateAccountPage({super.key,required this.isLawyerSelected});
+
+  bool isLawyerSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +123,7 @@ class CreateAccountPage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const MainPage(),
+                            builder: (context) => isLawyerSelected?LawyerMainPage(): const MainPage(),
                           ));
                     },
                     style: ElevatedButton.styleFrom(
@@ -144,7 +147,7 @@ class CreateAccountPage extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const LoginPage(),
+                                builder: (context) => LoginPage(isLawyerSelected: isLawyerSelected,),
                               ));
                         },
                         child: Text("Sign In"))

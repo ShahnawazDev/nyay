@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nyay/pages/create_account_page.dart';
+import 'package:nyay/pages/lawyer_main_page.dart';
 import 'package:nyay/pages/main_page.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+   LoginPage({super.key, required this.isLawyerSelected});
+
+  bool isLawyerSelected ;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +33,14 @@ class LoginPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               // SizedBox(height: 30.w),
+              Center(
+                child: Image(
+                  width: 150.w,
+                  image: const AssetImage(
+                    'assets/images/app_logo.png',
+                  ),
+                ),
+              ),
               Center(
                 child: Text(
                   'Sign In',
@@ -93,7 +104,7 @@ class LoginPage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const MainPage(),
+                            builder: (context) => isLawyerSelected? LawyerMainPage(): const MainPage(),
                           ));
                     },
                     style: ElevatedButton.styleFrom(
@@ -116,7 +127,7 @@ class LoginPage extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const CreateAccountPage(),
+                              builder: (context) =>  CreateAccountPage(isLawyerSelected: isLawyerSelected,),
                             ));
                       },
                       child: const Text("Sign Up"))

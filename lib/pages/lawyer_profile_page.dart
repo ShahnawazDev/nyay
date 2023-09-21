@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nyay/pages/lawyer_personal_details_page.dart';
 import 'package:nyay/pages/login_page.dart';
 import 'package:nyay/pages/personal_details_page.dart';
-import 'package:nyay/pages/welcome_page.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class LawyerProfilePage extends StatelessWidget {
+  const LawyerProfilePage({super.key});
 
 
 
@@ -31,12 +31,12 @@ class ProfilePage extends StatelessWidget {
           const SizedBox(height: 20),
           const CircleAvatar(
             radius: 60,
-            backgroundImage: AssetImage('assets/images/demo_profile_image.png'),
+            backgroundImage: AssetImage('assets/images/lawyers_profile/shankar_mishra.jpeg'),
             // Replace with your image asset
           ),
           SizedBox(height: 10.h),
           Text(
-            'Piyush Pandey', // Replace with the user's name
+            'Advocate Shankar Mishra', // Replace with the user's name
             style: TextStyle(
               fontSize: 22.w,
               fontWeight: FontWeight.bold,
@@ -76,7 +76,7 @@ class ProfilePage extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const PersonalDetailsPage(),
+              builder: (context) => const LawyerPersonalDetailsPage(),
             ),
           );
         } else if (title == 'Location') {
@@ -156,7 +156,7 @@ class ProfilePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>  const WelcomePage(),
+                    builder: (context) =>  LoginPage(isLawyerSelected: false,),
                   ),
                 );
               },

@@ -4,8 +4,21 @@ import 'package:nyay/pages/create_account_page.dart';
 import 'package:nyay/pages/login_page.dart';
 import 'package:nyay/pages/main_page.dart';
 
-class WelcomePage extends StatelessWidget {
+class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
+
+  @override
+  State<WelcomePage> createState() => _WelcomePageState();
+}
+
+class _WelcomePageState extends State<WelcomePage> {
+  bool isLawyerSelected = false;
+
+  void _toggleSelection() {
+    setState(() {
+      isLawyerSelected = !isLawyerSelected;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +46,7 @@ class WelcomePage extends StatelessWidget {
               height: 20.h,
             ),
             Text(
-              "Let's get started!",
+              "Choose User",
               style: TextStyle(
                 fontSize: 20.w,
                 fontWeight: FontWeight.bold,
@@ -42,6 +55,20 @@ class WelcomePage extends StatelessWidget {
             ),
             const SizedBox(
               height: 5,
+            ),
+            SizedBox(
+              height: 100.h,
+              child: Center(
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 100.w, vertical: 10.h), // 100% screen width
+                  child: Stack(
+                    children: isLawyerSelected
+                        ? [_buildClientCircle(), _buildLawyerCircle()]
+                        : [_buildLawyerCircle(), _buildClientCircle()],
+                  ),
+                ),
+              ),
             ),
             Text(
               "Login to proceed",
@@ -60,7 +87,9 @@ class WelcomePage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const LoginPage(),
+                        builder: (context) => LoginPage(
+                          isLawyerSelected: isLawyerSelected,
+                        ),
                       ));
                 },
                 style: ElevatedButton.styleFrom(
@@ -82,7 +111,9 @@ class WelcomePage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CreateAccountPage(),
+                        builder: (context) => CreateAccountPage(
+                          isLawyerSelected: isLawyerSelected,
+                        ),
                       ));
                 },
                 style: OutlinedButton.styleFrom(
@@ -96,29 +127,99 @@ class WelcomePage extends StatelessWidget {
                 child: const Text('Sign Up'),
               ),
             ),
-            const SizedBox(height: 20),
-            SizedBox(
-              height: 50.w,
-              width: 200.w,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const MainPage(),
-                      ));
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                        30.0), // Adjust the radius as needed
-                  ),
-                  backgroundColor: Colors.blue, // Button background color
-                ),
-                child: const Text('Guest Login'),
+            // const SizedBox(height: 20),
+            // SizedBox(
+            //   height: 50.w,
+            //   width: 200.w,
+            //   child: ElevatedButton(
+            //     onPressed: () {
+            //       Navigator.push(
+            //           context,
+            //           MaterialPageRoute(
+            //             builder: (context) => const MainPage(),
+            //           ));
+            //     },
+            //     style: ElevatedButton.styleFrom(
+            //       shape: RoundedRectangleBorder(
+            //         borderRadius: BorderRadius.circular(
+            //             30.0), // Adjust the radius as needed
+            //       ),
+            //       backgroundColor: Colors.blue, // Button background color
+            //     ),
+            //     child: const Text('Guest Login'),
+            //   ),
+            // ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Positioned _buildClientCircle() {
+    return Positioned(
+      left: 80.0,
+      child: GestureDetector(
+        onTap: () {
+          if (isLawyerSelected) {
+            _toggleSelection();
+          }
+        },
+        child: Container(
+          width: 80.h,
+          height: 80.h,
+          decoration: BoxDecoration(
+            color: !isLawyerSelected
+                ? Color.fromRGBO(64, 124, 226, 1)
+                : Color.fromRGBO(242, 242, 242, 1),
+            shape: BoxShape.circle,
+          ),
+          child: Center(
+            child: Text(
+              'Client',
+              style: TextStyle(
+                color: isLawyerSelected
+                    ? Color.fromRGBO(19, 78, 156, 1)
+                    : Colors.white,
+                fontSize: 12.w,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Positioned _buildLawyerCircle() {
+    return Positioned(
+      left: 0,
+      child: GestureDetector(
+        onTap: () {
+          if (!isLawyerSelected) {
+            _toggleSelection();
+          }
+        },
+        child: Container(
+          width: 80.0.h,
+          height: 80.0.h,
+          decoration: BoxDecoration(
+            color: isLawyerSelected
+                ? Color.fromRGBO(64, 124, 226, 1)
+                : Color.fromRGBO(242, 242, 242, 1),
+            shape: BoxShape.circle,
+          ),
+          child: Center(
+            child: Text(
+              'Lawyer',
+              style: TextStyle(
+                color: !isLawyerSelected
+                    ? Color.fromRGBO(19, 78, 156, 1)
+                    : Colors.white,
+                fontSize: 12.w,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
         ),
       ),
     );
